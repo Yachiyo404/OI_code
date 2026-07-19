@@ -70,8 +70,11 @@ signed main(){
         }
     }
     for(ll i=1;i<=k;i++){
-        for(ll j=i+1;j<=k;j++)
+        for(ll j=i+1;j<=k;j++){
             ans.push_back(g[i][j]);
+            // cout<<g[i][j]<<' ';
+        }
+        // cout<<endl;
     }
     sort(ans.begin(),ans.end());
     // for(ll i:ans)
