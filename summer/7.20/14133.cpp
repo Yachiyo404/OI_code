@@ -4,19 +4,19 @@ typedef long long ll;
 const int N=1e5+10;
 int n,m,cnt,tot;
 int dfn[N],low[N],col[N];
-bool insta[N];
+bool ins[N];
 stack<int> sta;
 vector<int> g[N];
 void tarjan(int u){
     dfn[u]=low[u]=++cnt;
     sta.push(u);
-    insta[u]=1;
+    ins[u]=1;
     for(int v:g[u]){
         if(!dfn[v]){
             tarjan(v);
             low[u]=min(low[u],low[v]);
         }
-        else if(insta[v])
+        else if(ins[v])
             low[u]=min(low[u],dfn[v]);
     }
     if(dfn[u]==low[u]){
@@ -26,7 +26,7 @@ void tarjan(int u){
             now=sta.top();
             sta.pop();
             col[now]=tot;
-            insta[now]=0;
+            ins[now]=0;
         }while(now!=u);
     }
 }
