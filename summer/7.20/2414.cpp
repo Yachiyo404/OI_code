@@ -1,34 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const int N=1e5+10;
+const int N=2e5+10;
 ll n,a,b,cnt,tot;
 ll dfn[N],low[N];
-bool ins[N],ise[N];//ise代表是否为割点
+bool ins[N];//ise代表是否为割点
 stack<ll> sta;
 vector<ll> g[N],ans;
-void tarjan(int u,int fa){
+void tarjan(int u){
     dfn[u]=low[u]=++cnt;
     sta.push(u);
-    ins[u]=1;
-    int cnt=0;
     for(int v:g[u]){
-        if(v!=fa){
-            if(!dfn[v]){
-                tarjan(v,u);
-                low[u]=min(low[u],low[v]);
-                cnt+=(low[v]>=dfn[u]);
-            }
-            else if(ins[v])
-                low[u]=min(low[u],dfn[v]);
+        if(!dfn[v]){
+            tarjan(v);
+            low[u]=min(low[u],low[v]);
+            if(low[v]>=dfn[u]&&dfn[v]<=dfn[b]&&u!=a)
+                ans.push_back(u);
         }
+        else 
+            low[u]=min(low[u],dfn[v]);
     }
-    if(u==a)
-        ise[u]=cnt>1;
-    else
-        ise[u]=cnt>0;
-    if(ise[u]&&dfn[u]<dfn[b]&&dfn[b]!=0)
-        ans.push_back(u);
 }
 int main(){
     ios::sync_with_stdio(0);
@@ -44,10 +35,7 @@ int main(){
         }
     }
     cin>>a>>b;
-    for(int i=1;i<=n;i++){
-        if(!dfn[i])
-            tarjan(i,i);
-    }
+    tarjan(a);
     if(ans.empty())
         cout<<"No solution";
     else{
