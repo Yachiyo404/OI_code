@@ -42,9 +42,9 @@ void topsort(ll s){
         for(int v:ng[u]){
             if(!vis[v]){
                 in[v]--;
+                ans++;
                 if(!in[v]){
                     q.push(v);
-                    ans++;
                     vis[v]=1;
                 }
             }
@@ -73,6 +73,10 @@ int main(){
         sort(ng[i].begin(),ng[i].end());
         ng[i].erase(unique(ng[i].begin(),ng[i].end()),ng[i].end());
     }
+    for(int i=1;i<=tot;i++){
+        if(cnt[i]>1)
+            ans+=cnt[i];
+    }
     // for(int i=1;i<=n;i++)
     //     cout<<col[i]<<' ';
     // cout<<endl;
@@ -83,10 +87,6 @@ int main(){
     for(ll i=1;i<=tot;i++){
         if(!in[i]&&!vis[i])
             topsort(i);
-    }
-    for(int i=1;i<=tot;i++){
-        if(cnt[i]>1)
-            ans+=cnt[i];
     }
     cout<<ans;
     return 0;
