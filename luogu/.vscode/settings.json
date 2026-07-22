@@ -1,9 +1,0 @@
-{
-    "C_Cpp.errorSquiggles": "enabled",
-    "C_Cpp.default.compilerPath": "d:\\Microsoft VS Code\\MinGW64\\bin\\x86_64-w64-mingw32-g++.exe",
-    "files.associations": {
-        "istream": "cpp",
-        "*.tcc": "cpp",
-        "ostream": "cpp"
-    }
-}
