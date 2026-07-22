@@ -346,7 +346,7 @@ int main(){
 
 我们常用的是二叉堆，具有较优的时间复杂度，插入为 $O(logn)$ ，查询堆顶为 $O(1)$ 。
 
-##### 例题：
+##### 例题
 
 [7454合并果子](https://www.xinyoudui.com/ac/contest/747010E44000BCD0902EFA/problem/6478)
 

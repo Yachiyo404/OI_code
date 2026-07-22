@@ -1,0 +1,42 @@
+1.define a b （在以下程序中将a替换为b）
+2.1<<n （2的n次方）
+3.resize(n) （在使用vector时，提前分配内存）
+4.前缀和代替反复计算
+5.在卡常时将一个循环分为多个循环
+6.inline int read(){
+    int x=0,f=1;
+    char ch=getchar();
+    while(ch<'0'||ch>'9'){
+        if(ch=='-')
+            f=-1;
+        ch=getchar();
+    }
+    while(ch>='0'&&ch<='9'){
+        x=x*10+(ch-'0');
+        ch=getchar();
+    }
+    return x*f;
+}（使用快读代替scanf/cin）
+inline void write(ll x){
+    if(x<0){
+        putchar('-');
+        x=-x;
+    }
+    if(x>9)
+        write(x/10);
+    putchar(x%10+'0');
+}
+7.VScode扩展：c++扩展包、c++ Intellisense、code runner
+8.在反复调用的函数前加inline
+9.在使用结构体为堆的数据结构时，可以使用以下代码自定义比较规则
+bool operator<(const value& other) const{
+		return v<other.v; // 降序
+}
+//v为要比较的值
+10.可以用STL中的unique来去重：
+vector<int> v = {1, 1, 2, 3, 3};
+auto it = unique(v.begin(), v.end()); // 返回指向逻辑结尾的迭代器
+v.erase(it, v.end()); // 实际删除重复项
+// v = {1, 2, 3}
+11.将 2*i 改为 i<<1，将 2*i+1 改为 i<<1|1
+12.srand(static_cast<unsigned>(time(NULL)))生成随机数
